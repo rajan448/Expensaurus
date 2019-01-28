@@ -25,7 +25,7 @@
     <ion-row>
       <ion-col>
         <ion-item>
-            <ion-datetime placeholder="Enter Date" display-format="DDD DD,MMM YYYY" 
+          <ion-datetime interface="popover" placeholder="Enter Date" display-format="DDD DD, MMM YYYY" 
             picker-format="DD,MMM YYYY" picker-options="{cssClass:'picker'}" [(ngModel)]="date"></ion-datetime>
         </ion-item>
       </ion-col>
@@ -34,7 +34,7 @@
       <ion-col>
         <ion-item>
             <ion-label>Priority</ion-label>
-            <ion-select [(ngModel)]="priority">
+            <ion-select interface="popover" [(ngModel)]="priority">
               <ion-select-option *ngFor="let val of priorities" [value]="val">{{ val }}</ion-select-option>
             </ion-select>
         </ion-item>
@@ -48,7 +48,8 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-select [(ngModel)]="currency">
+          <ion-label>Currency</ion-label>
+          <ion-select interface="popover" placeholder="Select currency" [(ngModel)]="currency">
             <ion-select-option *ngFor="let val of currencies" [value]="val">{{ val }}</ion-select-option>
           </ion-select>
         </ion-item>

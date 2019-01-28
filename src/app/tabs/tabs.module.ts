@@ -8,12 +8,14 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
 import { CurrencyConverterService } from '../services/currency-converter.service';
+import { HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     TabsPageRoutingModule
   ],
   declarations: [TabsPage],

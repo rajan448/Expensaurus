@@ -6,7 +6,7 @@ export interface IExpense {
     name: string;
     description?: string;
     amount: number;
-    date: Date;
+    date: string;
     currency: Currency;
     priority: Priority;
     rupeeEquivalent: number;

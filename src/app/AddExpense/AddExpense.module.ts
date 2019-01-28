@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddExpense } from './AddExpense';
 
@@ -12,6 +12,7 @@ import { AddExpense } from './AddExpense';
     FormsModule,
     RouterModule.forChild([{ path: '', component: AddExpense }])
   ],
-  declarations: [AddExpense]
+  declarations: [AddExpense],
+  providers: [DatePipe]
 })
 export class AddExpenseModule {}

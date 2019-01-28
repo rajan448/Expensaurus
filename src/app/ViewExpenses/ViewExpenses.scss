@@ -1,1 +1,45 @@
+.expense-card-header{
+    font-size: 1.3rem;
+    color: #000000;
+}
 
+.expense-priority-indispensable{
+    color: red;
+    &:after{
+        content: 'Is';
+        font-weight: 400
+    }
+}
+
+.expense-priority-major{
+    color: blue;
+    &:after{
+        content: 'Ma';
+        font-weight: 400
+    }
+}
+
+.expense-priority-minor{
+    color: green;
+    &:after{
+        content: 'Mi';
+        font-weight: 400
+    }
+}
+
+.expense-priority-indulgence{
+    color: yellow;
+    &:after{
+        content: 'Id';
+        font-weight: 400
+    }
+}
+
+.expense-priority-avoidable{
+    color: rgb(255, 0, 119);
+    &:after{
+        content: 'Av';
+        font-weight: 400
+    }
+
+}

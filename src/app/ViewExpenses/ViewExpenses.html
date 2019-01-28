@@ -6,4 +6,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-split-pane contentId="menu-content">
+  <!--  our side menu  -->
+  <ion-menu contentId="menu-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </ion-menu>
+  </ion-split-pane>
+
+<ion-content>
+  <ion-card *ngFor='let expense of expenses'>
+    <ion-card-header class="expense-card-header">
+      {{ expense.name }}
+      <span float-right [ngClass]="'expense-priority-' + expense.priority.toLowerCase()"></span>
+    </ion-card-header>
+    <ion-card-content>
+        <span float-left>{{ expense.date}}</span>
+        <span float-right>{{ expense.amount }} {{ expense.currency }} &rarr; {{ expense.rupeeEquivalent}} INR</span>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

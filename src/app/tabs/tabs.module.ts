@@ -9,6 +9,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 import { TabsPage } from './tabs.page';
 import { CurrencyConverterService } from '../services/currency-converter.service';
 import { HttpClientModule} from '@angular/common/http'
+import { GetExpensesService } from '../services/get-expenses.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { HttpClientModule} from '@angular/common/http'
     TabsPageRoutingModule
   ],
   declarations: [TabsPage],
-  providers:[CurrencyConverterService]
+  providers:[CurrencyConverterService, GetExpensesService]
 })
 export class TabsPageModule {}

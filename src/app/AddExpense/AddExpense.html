@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Add an Expense
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-input placeholder="Enter Expense Name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+        <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-input placeholder="Enter Expense Description" [(ngModel)]="description"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-datetime placeholder="Enter Date" display-format="DDD DD,MMM YYYY" 
+            picker-format="DD,MMM YYYY" picker-options="{cssClass:'picker'}" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+        <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-label>Priority</ion-label>
+            <ion-select [(ngModel)]="priority">
+              <ion-select-option *ngFor="let val of priorities" [value]="val">{{ val }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input placeholder="Enter amount" [(ngModel)]="amount"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-select [(ngModel)]="currency">
+            <ion-select-option *ngFor="let val of currencies" [value]="val">{{ val }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-button color="success" (click)="submitExpense()">Save Expense</ion-button>
+  </ion-grid>
+</ion-content>

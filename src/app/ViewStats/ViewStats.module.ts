@@ -3,20 +3,15 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { TabsPageRoutingModule } from './tabs.router.module';
-
-import { TabsPage } from './tabs.page';
-import { CurrencyConverterService } from '../services/currency-converter.service';
+import { ViewStats } from './ViewStats';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    RouterModule.forChild([{ path: '', component: ViewStats }])
   ],
-  declarations: [TabsPage],
-  providers:[CurrencyConverterService]
+  declarations: [ViewStats]
 })
-export class TabsPageModule {}
+export class ViewStatsModule {}

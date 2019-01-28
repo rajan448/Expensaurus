@@ -1,6 +1,8 @@
 {
   "name": "Expensaurus",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "d3f3e46f"
 }

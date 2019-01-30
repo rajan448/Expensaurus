@@ -1,3 +1,4 @@
+import { AngularFireDatabase } from '@angular/fire/database';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,6 @@ import { GetExpensesService } from '../services/get-expenses.service';
     TabsPageRoutingModule
   ],
   declarations: [TabsPage],
-  providers:[CurrencyConverterService, GetExpensesService]
+  providers:[CurrencyConverterService, GetExpensesService, AngularFireDatabase]
 })
 export class TabsPageModule {}

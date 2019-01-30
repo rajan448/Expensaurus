@@ -1,3 +1,5 @@
+import { GetExpensesService } from './../services/get-expenses.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Priority } from './../enums/priority';
 import { IExpense } from './../models/expense';
 import { Component, OnInit } from '@angular/core';
@@ -23,6 +25,9 @@ export class AddExpense implements OnInit {
   public currency: Currency = Currency.USD
   public priority: Priority
 
+  //id tracking variable
+  public id: number;
+
 
   // enum variables
   priorities = []
@@ -32,10 +37,15 @@ export class AddExpense implements OnInit {
   public expense: IExpense = <IExpense>{};
 
   constructor(private currencyService: CurrencyConverterService, private dp: DatePipe,
-    private addExpenseSrvc: AddExpenseService, private toast: ToastController) {
+    private addExpenseSrvc: AddExpenseService, private toast: ToastController,
+    private getExpensesSrvc: GetExpensesService) {
 
     this.priorities = Object.keys(Priority)
     this.currencies = Object.keys(Currency)
+
+    this.getExpensesSrvc.getLastIndex().valueChanges().subscribe(res => {
+      console.log(res)
+    })
   }
   ngOnInit() {
     this.date = this.dp.transform(new Date(), 'yyyy-MM-dd')
@@ -57,6 +67,7 @@ export class AddExpense implements OnInit {
   }
 
   async formPayload() {
+    this.expense.id = this.id;
     this.expense.name = this.name;
     this.expense.description = this.description;
     this.expense.date = this.date;

@@ -2,6 +2,7 @@ import { IExpense } from './../models/expense';
 import { Component, OnInit } from '@angular/core';
 import { GetExpensesService } from '../services/get-expenses.service';
 
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'ViewExpenses.html',
@@ -16,6 +17,8 @@ export class ViewExpenses implements OnInit{
   }
 
   public ngOnInit(){
-    this.expenses = this.getExpensesSrvc.getExpenses()
+    this.getExpensesSrvc.getExpenses().subscribe((res: IExpense[]) => {
+      this.expenses = res.reverse()
+    })
   }
 }

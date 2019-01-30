@@ -1,3 +1,4 @@
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';

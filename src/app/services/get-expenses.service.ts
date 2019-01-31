@@ -20,7 +20,7 @@ public getExpenses(){
 public getLastIndex(){
     return this.db.list('expenses', 
         ref => ref.limitToLast(1)
-    )
+    ).valueChanges()
 }
 
 

@@ -8,6 +8,7 @@ import { CurrencyConverterService } from '../services/currency-converter.service
 import { DatePipe } from '@angular/common';
 import { AddExpenseService } from '../services/add-expense.service';
 import { ToastController } from '@ionic/angular';
+import { take } from 'rxjs/operators'
 
 @Component({
   selector: 'add-expense',
@@ -25,8 +26,6 @@ export class AddExpense implements OnInit {
   public currency: Currency = Currency.USD
   public priority: Priority
 
-  //id tracking variable
-  public id: number;
 
 
   // enum variables
@@ -42,10 +41,6 @@ export class AddExpense implements OnInit {
 
     this.priorities = Object.keys(Priority)
     this.currencies = Object.keys(Currency)
-
-    this.getExpensesSrvc.getLastIndex().valueChanges().subscribe(res => {
-      console.log(res)
-    })
   }
   ngOnInit() {
     this.date = this.dp.transform(new Date(), 'yyyy-MM-dd')
@@ -67,7 +62,9 @@ export class AddExpense implements OnInit {
   }
 
   async formPayload() {
-    this.expense.id = this.id;
+
+    
+    
     this.expense.name = this.name;
     this.expense.description = this.description;
     this.expense.date = this.date;
@@ -87,6 +84,8 @@ export class AddExpense implements OnInit {
       this.expense.rupeeEquivalent = this.amount.valueOf();
     }
 
+    await this.updateLatestId()
+
 
   }
 
@@ -97,5 +96,16 @@ export class AddExpense implements OnInit {
       duration: 2000
     })
     toastIn.present();
+  }
+
+  // get last id and assign in expense variable
+  async updateLatestId() {
+    const obj = await this.getExpensesSrvc.getLastIndex().pipe(take(1)).toPromise()
+    console.log(obj)
+    if(obj.length > 0){
+      this.expense.id = obj[0]['id'] + 1
+    } else {
+      this.expense.id=1
+    }
   }
 }

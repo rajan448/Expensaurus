@@ -1,7 +1,8 @@
 import { IExpense } from './../models/expense';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GetExpensesService } from '../services/get-expenses.service';
 import { take } from 'rxjs/operators'
+import { IonInfiniteScroll } from '@ionic/angular'
 
 
 @Component({
@@ -11,8 +12,11 @@ import { take } from 'rxjs/operators'
 })
 export class ViewExpenses implements OnInit{
 
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
   public expenses: IExpense[]
   public lastIndexFetched: number
+  public infinite: boolean = false
 
   constructor(private getExpensesSrvc: GetExpensesService){
   }
@@ -32,5 +36,18 @@ export class ViewExpenses implements OnInit{
     if(obj.length > 0){
       this.lastIndexFetched = obj[0]['id']
     }
+  }
+
+  public fetchMore(event) {
+    
+    this.lastIndexFetched = this.lastIndexFetched - this.getExpensesSrvc.step
+    this.getExpensesSrvc.fetchRecords(this.lastIndexFetched).subscribe((res: IExpense[]) => {
+      const newExpenses = res.reverse()
+      for(let i=0; i<newExpenses.length; i++) {
+        this.expenses.push(newExpenses[i])
+      }
+      this.infinite = false
+      event.target.complete()
+    })
   }
 }

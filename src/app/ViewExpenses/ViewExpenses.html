@@ -20,7 +20,7 @@
 <ion-content>
   <ion-card *ngFor='let expense of expenses'>
     <ion-card-header class="expense-card-header">
-      {{ expense.name }}
+      {{ expense.name }} <b>ID: {{ expense.id }}</b>
       <span float-right [ngClass]="'expense-priority-' + expense.priority.toLowerCase()"></span>
     </ion-card-header>
     <ion-card-content>
@@ -29,3 +29,6 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+
+

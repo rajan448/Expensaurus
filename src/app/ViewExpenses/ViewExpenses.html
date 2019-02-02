@@ -18,16 +18,8 @@
   </ion-split-pane>
 
 <ion-content>
-    <ion-card *ngFor='let expense of expenses'>
-    <ion-card-header class="expense-card-header">
-      {{ expense.name }} <b>ID: {{ expense.id }}</b>
-      <span float-right [ngClass]="'expense-priority-' + expense.priority.toLowerCase()"></span>
-    </ion-card-header>
-    <ion-card-content>
-        <span float-left>{{ expense.date}}</span>
-        <span float-right>{{ expense.amount }} {{ expense.currency }} &rarr; {{ expense.rupeeEquivalent}} INR</span>
-    </ion-card-content>
-  </ion-card>
+  <app-expense *ngFor="let expense of expenses" [expense]="expense">
+  </app-expense>
 
     <ion-infinite-scroll (ionInfinite)="fetchMore($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>

@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ViewExpenses } from './ViewExpenses';
+import { ExpenseComponent } from '../Expense/expense.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { ViewExpenses } from './ViewExpenses';
     FormsModule,
     RouterModule.forChild([{ path: '', component: ViewExpenses }])
   ],
-  declarations: [ViewExpenses]
+  declarations: [ViewExpenses, ExpenseComponent]
 })
 export class ViewExpensesModule {}

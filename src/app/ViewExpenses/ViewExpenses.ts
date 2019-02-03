@@ -2,7 +2,8 @@ import { IExpense } from './../models/expense';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GetExpensesService } from '../services/get-expenses.service';
 import { take } from 'rxjs/operators'
-import { IonInfiniteScroll } from '@ionic/angular'
+import { IonInfiniteScroll, PopoverController, ModalController } from '@ionic/angular'
+import { SearchExpensesComponent } from '../search-expenses/search-expenses.component';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ViewExpenses implements OnInit{
   public lastIndexFetched: number
   public infinite: boolean = false
 
-  constructor(private getExpensesSrvc: GetExpensesService){
+  constructor(private getExpensesSrvc: GetExpensesService, private modalCtrl: ModalController){
   }
 
   async ngOnInit(){
@@ -49,5 +50,19 @@ export class ViewExpenses implements OnInit{
       this.infinite = false
       event.target.complete()
     })
+  }
+
+  async createSearchModal(ev:any){
+    const modal = await this.modalCtrl.create({
+      component: SearchExpensesComponent,
+    })
+
+    modal.onDidDismiss().then((data: any) => {
+      if(data && data.data) {
+        console.log(data.data.searchParamName)
+      }
+    })
+
+    return await modal.present()
   }
 }

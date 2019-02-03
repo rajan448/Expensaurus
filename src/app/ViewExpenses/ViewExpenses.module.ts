@@ -1,3 +1,4 @@
+import { SearchExpensesComponent } from './../search-expenses/search-expenses.component';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ import { ExpenseComponent } from '../Expense/expense.component';
     FormsModule,
     RouterModule.forChild([{ path: '', component: ViewExpenses }])
   ],
-  declarations: [ViewExpenses, ExpenseComponent]
+  entryComponents: [SearchExpensesComponent],
+  declarations: [ViewExpenses, ExpenseComponent, SearchExpensesComponent]
 })
 export class ViewExpensesModule {}

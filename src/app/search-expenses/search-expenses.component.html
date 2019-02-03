@@ -1,0 +1,32 @@
+<ion-content>
+<ion-header>
+    <ion-title>
+      Add an Expense
+    </ion-title>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-input placeholder="Enter Expense Name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-button color='danger' (click)="closeModal()">Cancel</ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+            <ion-button color='success' (click)="closeModal(name)">Search</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+</ion-content>

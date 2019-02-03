@@ -21,6 +21,12 @@
   <app-expense *ngFor="let expense of expenses" [expense]="expense">
   </app-expense>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createSearchModal($event)">
+      <ion-icon name="search"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
     <ion-infinite-scroll (ionInfinite)="fetchMore($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>

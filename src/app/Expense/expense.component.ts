@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExpenseComponent implements OnInit {
 
-  @Input() expense: IExpense
+  @Input() expense: IExpense;
   constructor() { }
 
   ngOnInit() {

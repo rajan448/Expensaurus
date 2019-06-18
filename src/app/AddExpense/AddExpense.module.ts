@@ -1,4 +1,3 @@
-import { AddExpenseService } from './../services/add-expense.service';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -14,6 +13,6 @@ import { AddExpense } from './AddExpense';
     RouterModule.forChild([{ path: '', component: AddExpense }])
   ],
   declarations: [AddExpense],
-  providers: [DatePipe, AddExpenseService]
+  providers: [DatePipe]
 })
 export class AddExpenseModule {}

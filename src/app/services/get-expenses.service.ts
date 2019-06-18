@@ -1,35 +1,28 @@
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Injectable } from "@angular/core";
-import { Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators'
-
-
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { IExpense } from '../models/expense';
 
 @Injectable()
 export class GetExpensesService {
 
-public step: number = 10
+    public step = 10;
 
-constructor(private db: AngularFireDatabase){
+    private serviceURL = 'http://localhost:8099/expenses';
 
-}
-public getExpenses(){
-    return this.db.list('expenses').valueChanges()
-}
-
-public fetchRecords(end){
-    if(end){
-        return this.db.list('expenses', 
-        ref => ref.orderByChild('id')
-            .startAt(end - this.step + 1)
-            .endAt(end)).valueChanges()
+    constructor(private http: HttpClient) {
     }
-}
 
-public getLastIndex(){
-    return this.db.list('expenses', 
-        ref => ref.limitToLast(1)
-    ).valueChanges()
-}
- 
+    public addExpense(expense: IExpense) {
+        return this.http.post(this.serviceURL, expense);
+    }
+
+    public fetchRecords(end) {
+        return this.http.get(this.serviceURL, {
+            params: new HttpParams({fromObject: {
+                page: (end).toString(),
+                size: (this.step).toString()
+            }})
+        });
+    }
 }

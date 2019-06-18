@@ -1,5 +1,5 @@
-import { Currency } from "../enums/currency";
-import { Priority } from "../enums/priority";
+import { Currency } from '../enums/currency';
+import { Priority } from '../enums/priority';
 
 
 export interface IExpense {

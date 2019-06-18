@@ -1,7 +1,7 @@
   <ion-card>
     <ion-card-header class="expense-card-header">
       {{ expense.name }} <b>ID: {{ expense.id }}</b>
-      <span float-right [ngClass]="'expense-priority-' + expense.priority.toLowerCase()"></span>
+      <span float-right [ngClass]="'expense-priority-' + expense.priority?.toLowerCase()"></span>
     </ion-card-header>
     <ion-card-content>
         <span float-left>{{ expense.date}}</span>

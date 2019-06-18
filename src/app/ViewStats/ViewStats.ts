@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: 'ViewStats.html',
   styleUrls: ['ViewStats.scss']
 })
-export class ViewStats {}
+export class ViewStats {
+
+
+  
+
+}
